@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "354940237805",
+    "project_id": "locate-me-9e669",
+    "storage_bucket": "locate-me-9e669.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354940237805:android:1fbd3d5d6daf0af4a2d9e4",
+        "android_client_info": {
+          "package_name": "com.example.locate_me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354940237805-aeg3lbb3i96ct3lqnovmnmr644f5824a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.locate_me",
+            "certificate_hash": "fbc32400571bfbd368dfca1bda656bf20c4faf18"
+          }
+        },
+        {
+          "client_id": "354940237805-nhv2shgf9i0p81h5v84g039vs45482jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5MLRvTRQFjeUPhMvdEiqaAzPS3pEEycI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354940237805-nhv2shgf9i0p81h5v84g039vs45482jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
