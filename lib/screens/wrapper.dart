@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locate_me/screens/home/map_screen.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({
@@ -12,11 +13,7 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-        body: SafeArea(
-      child: Text('This controls the navigation to the auth or home screens'),
-    )
-        );
+    // returning only map screen for now
+    return const MapScreen();
   }
 }
