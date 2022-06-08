@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.locate_me">
    <application
-        android:label="locate_me"
+        android:label="Locate Me"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
