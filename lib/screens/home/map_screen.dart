@@ -19,29 +19,33 @@ class _MapScreenState extends State<MapScreen> {
           // centerTitle: true,
           elevation: 0,
           actions: [
-            ElevatedButton.icon(
-              label: Text(
-                themeNotifier.isDark ? 'Dark Mode' : 'Light Mode',
-                style: TextStyle(
+            SizedBox(
+              width: 100,
+              child: ElevatedButton.icon(
+                label: Text(
+                  themeNotifier.isDark ? 'Dark Mode' : 'Light Mode',
+                  style: TextStyle(
+                    color: themeNotifier.isDark
+                        ? Colors.blue.shade700
+                        : Colors.orange,
+                  ),
+                ),
+                icon: Icon(
+                  themeNotifier.isDark ? Icons.nightlight : Icons.wb_sunny,
                   color: themeNotifier.isDark
                       ? Colors.blue.shade700
                       : Colors.orange,
                 ),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.grey.shade300),
+                ),
+                onPressed: () {
+                  themeNotifier.isDark
+                      ? themeNotifier.isDark = false
+                      : themeNotifier.isDark = true;
+                },
               ),
-              icon: Icon(
-                themeNotifier.isDark ? Icons.nightlight : Icons.wb_sunny,
-                color:
-                    themeNotifier.isDark ? Colors.blue.shade700 : Colors.orange,
-              ),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.grey.shade300),
-              ),
-              onPressed: () {
-                themeNotifier.isDark
-                    ? themeNotifier.isDark = false
-                    : themeNotifier.isDark = true;
-              },
             )
           ],
         ),
