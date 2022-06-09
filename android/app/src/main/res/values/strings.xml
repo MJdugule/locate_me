@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Locate me</string> 
+    <string name="facebook_app_id">709288160184500</string>
+    <string name="fb_login_protocol_scheme">fb709288160184500</string>
+    <string name="facebook_client_token">4c45f08148c2f3f826a72b6628df3c23</string>
+</resources>
