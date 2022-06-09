@@ -1,6 +1,6 @@
 {
-    "name": "locate_me",
-    "short_name": "locate_me",
+    "name": "locate_me_now",
+    "short_name": "locate_me_now",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
