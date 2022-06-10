@@ -19,23 +19,7 @@ class _MapScreenState extends State<MapScreen> {
           title: const Text('Map Screen'),
           // centerTitle: true,
           elevation: 0,
-          actions: [
-            ElevatedButton(
-              onPressed: () async {
-                Authentication().logOut(context);
-              },
-              child: Text('Logout',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: themeNotifier.isDark
-                        ? Colors.blue.shade700
-                        : Colors.orange,
-                  )),
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.grey.shade300),
-              ),
-            ),
+
           leading: ElevatedButton(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +44,7 @@ class _MapScreenState extends State<MapScreen> {
               ],
             ),
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(Colors.grey.shade300),
+              backgroundColor: MaterialStateProperty.all(Colors.grey.shade300),
             ),
             onPressed: () {
               themeNotifier.isDark
@@ -69,6 +52,24 @@ class _MapScreenState extends State<MapScreen> {
                   : themeNotifier.isDark = true;
             },
           ),
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                Authentication().logOut(context);
+              },
+              child: Text('Logout',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: themeNotifier.isDark
+                        ? Colors.blue.shade700
+                        : Colors.orange,
+                  )),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.grey.shade300),
+              ),
+            ),
+          ],
         ),
         body: const SafeArea(
           child: Text('Map Screen stuff goes here',
