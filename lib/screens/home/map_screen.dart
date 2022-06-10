@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locate_me/models/theme_model.dart';
+import 'package:locate_me/services/auth.dart';
 import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {
@@ -18,6 +19,23 @@ class _MapScreenState extends State<MapScreen> {
           title: const Text('Map Screen'),
           // centerTitle: true,
           elevation: 0,
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                Authentication().logOut(context);
+              },
+              child: Text('Logout',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: themeNotifier.isDark
+                        ? Colors.blue.shade700
+                        : Colors.orange,
+                  )),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Colors.grey.shade300),
+              ),
+            ),
           leading: ElevatedButton(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

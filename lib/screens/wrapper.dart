@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locate_me/screens/home/map_screen.dart';
+import 'package:locate_me/screens/splashscreen.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({
@@ -14,6 +15,6 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     // returning only map screen for now
-    return const MapScreen();
+    return const SplashScreen();
   }
 }
