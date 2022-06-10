@@ -21,11 +21,23 @@ class _MainSignInState extends State<MainSignIn> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Hero(tag: 'logo', child: Image.asset('assets/Logo.png')),
             const SizedBox(
-              height: 250,
+              height: 50,
             ),
-            Text('WELCOME', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+            Container(
+              child: Hero(tag: 'logo', child: Image.asset('assets/Logo.png')),
+              padding: const EdgeInsets.all(4.0),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0)),
+            ),
+            const SizedBox(
+              height: 200,
+            ),
+            const Text(
+              'WELCOME',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
             googleAuth(),
             facebookAuth()
           ],
@@ -36,8 +48,8 @@ class _MainSignInState extends State<MainSignIn> {
 
   googleAuth() {
     return InkWell(
-      onTap: ()async{
-       await google.signInWithGoogle(context);
+      onTap: () async {
+        await google.signInWithGoogle(context);
       },
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Container(
@@ -51,7 +63,8 @@ class _MainSignInState extends State<MainSignIn> {
           child: const Center(
               child: Text(
             'Login with google',
-            style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ),
         Container(
@@ -67,13 +80,13 @@ class _MainSignInState extends State<MainSignIn> {
       ]),
     );
   }
-   facebookAuth() {
+
+  facebookAuth() {
     return InkWell(
-      onTap: ()async{
-       await google.signInWithFacebook(context);
+      onTap: () async {
+        await google.signInWithFacebook(context);
       },
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      
         Container(
             height: 70,
             decoration: BoxDecoration(
@@ -81,10 +94,12 @@ class _MainSignInState extends State<MainSignIn> {
                 borderRadius: const BorderRadius.all(const Radius.circular(20)),
                 color: Colors.white),
             child: Image.asset(
-              'assets/facebook.png', width: 65, height: 60,
+              'assets/facebook.png',
+              width: 65,
+              height: 60,
               fit: BoxFit.contain,
             )),
-              Container(
+        Container(
           height: 40,
           width: 250,
           decoration: const BoxDecoration(
@@ -95,12 +110,11 @@ class _MainSignInState extends State<MainSignIn> {
           child: const Center(
               child: Text(
             'Login with Facebook',
-            style: TextStyle(color: Colors.white, fontSize: 20,  fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ),
       ]),
     );
   }
-
-  //facebookAuth() {}
 }
