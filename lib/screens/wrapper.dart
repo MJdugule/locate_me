@@ -14,7 +14,6 @@ class Wrapper extends StatefulWidget {
 class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
-    // returning only map screen for now
     return const SplashScreen();
   }
 }
