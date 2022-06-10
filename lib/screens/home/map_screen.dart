@@ -36,35 +36,39 @@ class _MapScreenState extends State<MapScreen> {
                     MaterialStateProperty.all(Colors.grey.shade300),
               ),
             ),
-            SizedBox(
-              width: 100,
-              child: ElevatedButton.icon(
-                label: Text(
-                  themeNotifier.isDark ? 'Dark Mode' : 'Light Mode',
-                  style: TextStyle(
-                    color: themeNotifier.isDark
-                        ? Colors.blue.shade700
-                        : Colors.orange,
-                  ),
-                ),
-                icon: Icon(
+          leading: ElevatedButton(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
                   themeNotifier.isDark ? Icons.nightlight : Icons.wb_sunny,
                   color: themeNotifier.isDark
                       ? Colors.blue.shade700
                       : Colors.orange,
                 ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade300),
+                const SizedBox(height: 5),
+                Text(
+                  themeNotifier.isDark ? 'Dark Mode' : 'Light Mode',
+                  style: TextStyle(
+                    fontSize: 8,
+                    color: themeNotifier.isDark
+                        ? Colors.blue.shade700
+                        : Colors.orange,
+                  ),
                 ),
-                onPressed: () {
-                  themeNotifier.isDark
-                      ? themeNotifier.isDark = false
-                      : themeNotifier.isDark = true;
-                },
-              ),
-            )
-          ],
+              ],
+            ),
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Colors.grey.shade300),
+            ),
+            onPressed: () {
+              themeNotifier.isDark
+                  ? themeNotifier.isDark = false
+                  : themeNotifier.isDark = true;
+            },
+          ),
         ),
         body: const SafeArea(
           child: Text('Map Screen stuff goes here',
