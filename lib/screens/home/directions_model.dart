@@ -38,7 +38,7 @@ class Directions {
       distance = leg['distance']['text'];
       duration = leg['duration']['text'];
     }
-    print('distance is $distance and duration is $duration');
+    // print('distance is $distance and duration is $duration');
     return Directions(
       bounds: bounds,
       polylinePoints:
