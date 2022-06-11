@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:locate_me/screens/home/map_screen.dart';
 import 'package:locate_me/screens/splashscreen.dart';
 
 class Wrapper extends StatefulWidget {

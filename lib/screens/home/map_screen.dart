@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:locate_me/models/directions_model.dart';
+import 'package:locate_me/screens/home/directions_respository.dart';
+
 import 'package:locate_me/models/theme_model.dart';
 import 'package:locate_me/services/auth.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:locate_me/screens/home/directions_respository.dart';
-import 'directions_model.dart';
+import 'package:locate_me/shared_constants/colors.dart';
 import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {
@@ -19,9 +22,7 @@ class _MapScreenState extends State<MapScreen> {
     zoom: 11.5,
   );
   GoogleMapController? _googleMapController;
-
   Marker? _origin;
-
   Marker? _destination;
   Directions? _info;
 
@@ -37,7 +38,9 @@ class _MapScreenState extends State<MapScreen> {
       builder: (context, ThemeModel themeNotifier, child) {
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.grey.shade300,
+            backgroundColor: themeNotifier.isDark
+                ? Colors.grey.shade800
+                : Colors.grey.shade300,
             title: Text(
               'LocateMe',
               style: TextStyle(
@@ -70,8 +73,11 @@ class _MapScreenState extends State<MapScreen> {
                 ],
               ),
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.grey.shade300),
+                backgroundColor: MaterialStateProperty.all(
+                  themeNotifier.isDark
+                      ? Colors.grey.shade800
+                      : Colors.grey.shade300,
+                ),
               ),
               onPressed: () {
                 themeNotifier.isDark
@@ -80,42 +86,49 @@ class _MapScreenState extends State<MapScreen> {
               },
             ),
             actions: [
-              if (_origin != null)
-                TextButton(
-                  onPressed: () => _googleMapController?.animateCamera(
-                    CameraUpdate.newCameraPosition(
-                      CameraPosition(
-                        target: _origin!.position,
-                        zoom: 14.5,
-                        tilt: 50.0,
-                      ),
-                    ),
-                  ),
-                  style: TextButton.styleFrom(
-                    primary: Colors.green,
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  child: const Text('Origin'),
-                ),
-              if (_destination != null)
-                TextButton(
-                    onPressed: () => _googleMapController?.animateCamera(
-                          CameraUpdate.newCameraPosition(
-                            CameraPosition(
-                              target: _destination!.position,
-                              zoom: 14.5,
-                              tilt: 50.0,
-                            ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  if (_origin != null)
+                    InkWell(
+                      onTap: () => _googleMapController?.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: _origin!.position,
+                            zoom: 14.5,
+                            tilt: 50.0,
                           ),
                         ),
-                    style: TextButton.styleFrom(
-                        primary: Colors.blue,
-                        textStyle: const TextStyle(
+                      ),
+                      child: Text(
+                        'Origin',
+                        style: TextStyle(
                           fontWeight: FontWeight.w600,
-                        )),
-                    child: const Text('Destination')),
+                          color: Colors.green,
+                        ),
+                      ),
+                    ),
+                  if (_destination != null)
+                    InkWell(
+                      onTap: () => _googleMapController?.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: _destination!.position,
+                            zoom: 14.5,
+                            tilt: 50.0,
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        'Destination',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               ElevatedButton(
                 onPressed: () async {
                   Authentication().logOut(context);
@@ -128,8 +141,11 @@ class _MapScreenState extends State<MapScreen> {
                           : Colors.orange,
                     )),
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.grey.shade300),
+                  backgroundColor: MaterialStateProperty.all(
+                    themeNotifier.isDark
+                        ? Colors.grey.shade800
+                        : Colors.grey.shade300,
+                  ),
                 ),
               ),
             ],
@@ -137,31 +153,6 @@ class _MapScreenState extends State<MapScreen> {
           body: Stack(
             alignment: Alignment.center,
             children: [
-              if (_info != null)
-                Positioned(
-                  top: 20,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 2),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      '${_info?.totalDistance}, ${_info?.totalDuration}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
               GoogleMap(
                 myLocationButtonEnabled: false,
                 zoomControlsEnabled: false,
@@ -173,6 +164,7 @@ class _MapScreenState extends State<MapScreen> {
                   if (_destination != null) _destination!,
                 },
                 onLongPress: _addMaker,
+                onTap: _addMaker,
                 polylines: {
                   if (_info != null)
                     Polyline(
@@ -191,7 +183,7 @@ class _MapScreenState extends State<MapScreen> {
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
                     decoration: BoxDecoration(
-                      color: Colors.amber,
+                      color: buttonColor,
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: const [
                         BoxShadow(

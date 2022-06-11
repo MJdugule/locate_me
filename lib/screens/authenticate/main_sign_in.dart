@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:locate_me/services/auth.dart';
 import 'package:locate_me/shared_constants/colors.dart';
 

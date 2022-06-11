@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -38,7 +37,7 @@ class Directions {
       distance = leg['distance']['text'];
       duration = leg['duration']['text'];
     }
-    print('distance is $distance and duration is $duration');
+    // print('distance is $distance and duration is $duration');
     return Directions(
       bounds: bounds,
       polylinePoints:

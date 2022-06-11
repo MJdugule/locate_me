@@ -1,14 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:locate_me/screens/home/.env.dart';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import 'directions_model.dart';
+import 'package:locate_me/screens/home/key.dart';
+import 'package:locate_me/models/directions_model.dart';
 
 class DirectionsRespository {
+  String key = apiKey.APIKey;
   static const String _baseUrl =
-      'https://maps.googleapis.com/maps/api/directions/json?origin=LAT,LON&destination=LAT,LON&key=AIzaSyC9PC0oBWvhU9szHJg9LpaQeMgxJ_1AyKw';
+      'https://maps.googleapis.com/maps/api/directions/json?';
 
   final Dio _dio;
 
@@ -23,7 +21,7 @@ class DirectionsRespository {
       queryParameters: {
         'origin': '${origin.latitude},${origin.longitude}',
         'destination': '${destination.latitude},${destination.longitude}',
-        'key': googleAPIKey,
+        'key': apiKey.APIKey,
       },
     );
 
